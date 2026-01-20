@@ -6,4 +6,5 @@
 <div style="display: flex; gap: 10px;">
   <a href="https://www.mczwlt.net/"><img src="source/mczwlt.png" style="width: auto; height: 37px;"></a>
   <a href="https://qm.qq.com/q/qvz5Yys9CE"><img src="source/dreaminn.png" style="width: auto; height: 37px;"></a>
+  <a href="https://ewo.org.cn"><img src="/source/ewo.png" style="width: auto; height: 37px;"></a>
 </div>
