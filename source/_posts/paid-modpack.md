@@ -1,5 +1,5 @@
 ---
-title: 「杂谈」Minecraft 付费整合包，真的违规吗？
+title: Minecraft 付费整合包，真的违规吗？
 date: 2026.3.23
 tags: Minecraft，整合包
 ---
