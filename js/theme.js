@@ -64,3 +64,38 @@ observeMediaChange(mqList, (event) => {
     switchThemeMode("light");
   }
 });
+
+function initBackToTopButton() {
+  const button = document.querySelector("[data-back-to-top]");
+  if (!button) {
+    return;
+  }
+
+  const threshold = 120;
+
+  const updateVisibility = () => {
+    const scrollTop =
+      window.pageYOffset || document.documentElement.scrollTop || 0;
+    const viewportHeight =
+      window.innerHeight || document.documentElement.clientHeight || 0;
+    const pageHeight = document.documentElement.scrollHeight || 0;
+    const nearBottom = scrollTop + viewportHeight >= pageHeight - threshold;
+    const hasScrollableArea = pageHeight > viewportHeight + 10;
+
+    button.classList.toggle("is-visible", nearBottom && hasScrollableArea);
+  };
+
+  window.addEventListener("scroll", updateVisibility, { passive: true });
+  window.addEventListener("resize", updateVisibility);
+
+  button.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+
+  updateVisibility();
+}
+
+initBackToTopButton();
