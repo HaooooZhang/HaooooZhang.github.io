@@ -1,7 +1,7 @@
 ---
 title: Core³ 三维 | 一种更加合理的整合包分类方法
 date: 2025.8.19
-tags: Minecraft，整合包
+tags: [Minecraft , 整合包]
 ---
 想象一个这样的场景：
 

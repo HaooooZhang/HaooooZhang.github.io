@@ -7,3 +7,7 @@ public/
 .deploy*/
 _multiconfig.yml
 themes/hipaper
+
+# Keep typo theme changes in this repo only (do not treat as nested repo)
+themes/typo/.git/
+themes/typo/node_modules/

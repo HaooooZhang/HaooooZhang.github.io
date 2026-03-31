@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<%- partial('_partial/head') %>
+
+<body>
+  <%- partial('_partial/header') %>
+  <main class="main">
+    <%- body %>
+  </main>
+  <%- partial('_partial/footer') %>
+  <button class="back-to-top" type="button" aria-label="Back to top" data-back-to-top>
+    <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
+  </button>
+  <%- js('js/theme.js') %>
+</body>
+
+</html>
