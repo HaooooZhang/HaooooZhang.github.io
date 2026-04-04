@@ -225,8 +225,10 @@ body.side-index-overlay .side-index-mask.is-open {
   pointer-events: auto;
 }
 
-body.side-index-open {
-  overflow: hidden;
+@media (max-width: 640px) {
+  body.side-index-overlay.side-index-open {
+    overflow: hidden;
+  }
 }
 
 body.side-index-docked .side-index {

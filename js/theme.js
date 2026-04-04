@@ -259,7 +259,7 @@ function initHomeSideIndex() {
     }
 
     const touch = event.touches && event.touches[0];
-    if (!touch || touch.clientX > 56) {
+    if (!touch || touch.clientX > 112) {
       openSwipeTracking = false;
       return;
     }
