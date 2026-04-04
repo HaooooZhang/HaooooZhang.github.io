@@ -103,7 +103,7 @@ initBackToTopButton();
 function initHomeSideIndex() {
   const panel = document.querySelector("[data-side-index]");
   const toggle = document.querySelector("[data-index-toggle]");
-  if (!panel || !toggle) {
+  if (!panel) {
     return;
   }
 
@@ -162,12 +162,17 @@ function initHomeSideIndex() {
 
   const setOpen = (open) => {
     panel.classList.toggle("is-open", open);
-    toggle.classList.toggle("is-active", open);
-    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    if (toggle) {
+      toggle.classList.toggle("is-active", open);
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+    document.body.classList.toggle("side-index-open", open);
     if (mask) {
       mask.classList.toggle("is-open", open);
     }
   };
+
+  const isMobileView = () => window.matchMedia("(max-width: 640px)").matches;
 
   const hasLeftSpace = () => {
     const rootStyles = getComputedStyle(document.documentElement);
@@ -228,9 +233,11 @@ function initHomeSideIndex() {
     touchTracking = false;
   };
 
-  toggle.addEventListener("click", () => {
-    setOpen(!panel.classList.contains("is-open"));
-  });
+  if (toggle) {
+    toggle.addEventListener("click", () => {
+      setOpen(!panel.classList.contains("is-open"));
+    });
+  }
 
   if (mask) {
     mask.addEventListener("click", () => {
@@ -240,6 +247,53 @@ function initHomeSideIndex() {
 
   panel.addEventListener("touchstart", onTouchStart, { passive: true });
   panel.addEventListener("touchend", onTouchEnd, { passive: true });
+
+  let openSwipeStartX = 0;
+  let openSwipeStartY = 0;
+  let openSwipeTracking = false;
+
+  const onGlobalTouchStart = (event) => {
+    if (!isMobileView() || !isOverlayMode() || panel.classList.contains("is-open")) {
+      openSwipeTracking = false;
+      return;
+    }
+
+    const touch = event.touches && event.touches[0];
+    if (!touch || touch.clientX > 224) {
+      openSwipeTracking = false;
+      return;
+    }
+
+    openSwipeStartX = touch.clientX;
+    openSwipeStartY = touch.clientY;
+    openSwipeTracking = true;
+  };
+
+  const onGlobalTouchEnd = (event) => {
+    if (!openSwipeTracking || !isMobileView() || !isOverlayMode() || panel.classList.contains("is-open")) {
+      openSwipeTracking = false;
+      return;
+    }
+
+    const touch = event.changedTouches && event.changedTouches[0];
+    if (!touch) {
+      openSwipeTracking = false;
+      return;
+    }
+
+    const deltaX = touch.clientX - openSwipeStartX;
+    const deltaY = touch.clientY - openSwipeStartY;
+    const isHorizontalSwipe = Math.abs(deltaX) > Math.abs(deltaY) && deltaX > 60;
+
+    if (isHorizontalSwipe) {
+      setOpen(true);
+    }
+
+    openSwipeTracking = false;
+  };
+
+  document.addEventListener("touchstart", onGlobalTouchStart, { passive: true });
+  document.addEventListener("touchend", onGlobalTouchEnd, { passive: true });
 
   if (searchInput) {
     searchInput.addEventListener("input", applyFilter);
