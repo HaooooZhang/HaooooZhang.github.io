@@ -538,12 +538,7 @@ a {
   }
 
   .index-toggle {
-    left: -52px;
-    width: 2rem;
-    height: 2rem;
-    font-size: 1.85rem;
-    top: 0.6rem;
-    transform: none;
+    display: none;
   }
 
   .back-to-top {
