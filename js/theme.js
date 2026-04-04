@@ -164,6 +164,7 @@ function initHomeSideIndex() {
     panel.classList.toggle("is-open", open);
     toggle.classList.toggle("is-active", open);
     toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    document.body.classList.toggle("side-index-open", open);
     if (mask) {
       mask.classList.toggle("is-open", open);
     }
