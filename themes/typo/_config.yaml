@@ -6,4 +6,7 @@ menu:
   archives: /archives
   about: /about
 
+category_icons:
+  default: fa-solid fa-folder
+
 copyright: 2024 typo

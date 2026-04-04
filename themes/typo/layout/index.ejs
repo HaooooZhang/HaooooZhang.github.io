@@ -1,6 +1,46 @@
+<aside class="side-index" data-side-index>
+  <div class="side-index-inner">
+    <section class="side-index-section">
+      <div class="side-index-title">搜索</div>
+      <input class="side-index-search" type="search" placeholder="搜索标题..." data-filter-title />
+    </section>
+
+    <section class="side-index-section">
+      <div class="side-index-title">分类</div>
+      <div class="side-index-category-list">
+        <% site.categories.sort('name').each(function (category) { %>
+        <% var iconClass = (theme.category_icons && theme.category_icons[category.name]) || (theme.category_icons && theme.category_icons.default) || 'fa-regular fa-folder-open'; %>
+        <button class="side-index-category" type="button" data-filter-category="<%= category.name %>">
+          <i class="<%= iconClass %>" aria-hidden="true"></i>
+          <span class="name"><%= category.name %></span>
+          <span class="count"><%= category.length %></span>
+        </button>
+        <% }) %>
+      </div>
+    </section>
+
+    <section class="side-index-section">
+      <div class="side-index-title">标签</div>
+      <div class="side-index-tag-list">
+        <% site.tags.sort('-length').each(function (tag) { %>
+        <button class="side-index-tag" type="button" data-filter-tag="<%= tag.name %>">
+          <span class="name"><%= tag.name %></span>
+          <span class="count"><%= tag.length %></span>
+        </button>
+        <% }) %>
+      </div>
+    </section>
+
+    <div class="side-index-footer">
+      <button class="side-index-clear" type="button" data-filter-clear>清除筛选</button>
+    </div>
+  </div>
+</aside>
+<div class="side-index-mask" data-index-mask></div>
+
 <div class="post-list">
   <% page.posts.each(function (post) { %>
-  <section class="post-item">
+  <section class="post-item" data-title="<%= post.title %>" data-categories="<%= post.categories.map(function (c) { return c.name; }).join('||') %>" data-tags="<%= post.tags.map(function (t) { return t.name; }).join('||') %>">
     <a class="post-item-title" href="<%- url_for(post.path) %>"><%= post.title %></a>
     <div class="post-item-summary">
       <%- strip_html(post.excerpt || post.content).substr(0, 240) %>
