@@ -77,6 +77,8 @@ body {
   line-height: 1;
   opacity: 0.9;
   transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .index-toggle:hover,
@@ -85,9 +87,11 @@ body {
   opacity: 1;
 }
 
-.index-toggle i {
+.index-toggle svg {
   font-size: 1em;
   line-height: 1;
+  width: 1.1em;
+  height: 1.1em;
 }
 
 .side-index {
@@ -143,6 +147,9 @@ body {
   border: 0;
   background: transparent;
   text-align: left;
+  appearance: none;
+  -webkit-appearance: none;
+  font: inherit;
 }
 
 .side-index-search {
@@ -181,6 +188,19 @@ body {
 .side-index-category .count {
   font-size: 0.8rem;
   color: var(--font-color-extra);
+}
+
+.side-index-category .category-icon {
+  width: 1em;
+  height: 1em;
+  flex: 0 0 auto;
+}
+
+.side-index-tag,
+.side-index-category,
+.side-index-clear {
+  background-image: none;
+  box-shadow: none;
 }
 
 .side-index-tag:hover,
