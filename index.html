@@ -39,7 +39,14 @@
 <body>
   <header class="header">
   <section class="header-container">
-    <a class="logo" href="/">浅月暮雨的魔法书</a>
+    <div class="logo-wrap">
+      
+      <button class="index-toggle" type="button" aria-label="Toggle index" data-index-toggle aria-expanded="false">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+      
+      <a class="logo" href="/">浅月暮雨的魔法书</a>
+    </div>
     <ul class="nav">
       
       <li><a href="/archives">archives</a></li>
@@ -50,9 +57,93 @@
   </section>
 </header>
   <main class="main">
-    <div class="post-list">
+    <aside class="side-index" data-side-index>
+  <div class="side-index-inner">
+    <section class="side-index-section">
+      <div class="side-index-title">搜索</div>
+      <input class="side-index-search" type="search" placeholder="搜索标题..." data-filter-title />
+    </section>
+
+    <section class="side-index-section">
+      <div class="side-index-title">分类</div>
+      <div class="side-index-category-list">
+        
+        
+        <button class="side-index-category" type="button" data-filter-category="文学">
+          <i class="fa-solid fa-folder" aria-hidden="true"></i>
+          <span class="name">文学</span>
+          <span class="count">1</span>
+        </button>
+        
+        
+        <button class="side-index-category" type="button" data-filter-category="文章">
+          <i class="fa-solid fa-folder" aria-hidden="true"></i>
+          <span class="name">文章</span>
+          <span class="count">3</span>
+        </button>
+        
+        
+        <button class="side-index-category" type="button" data-filter-category="笔记">
+          <i class="fa-solid fa-folder" aria-hidden="true"></i>
+          <span class="name">笔记</span>
+          <span class="count">1</span>
+        </button>
+        
+      </div>
+    </section>
+
+    <section class="side-index-section">
+      <div class="side-index-title">标签</div>
+      <div class="side-index-tag-list">
+        
+        <button class="side-index-tag" type="button" data-filter-tag="Minecraft">
+          <span class="name">Minecraft</span>
+          <span class="count">2</span>
+        </button>
+        
+        <button class="side-index-tag" type="button" data-filter-tag="整合包">
+          <span class="name">整合包</span>
+          <span class="count">2</span>
+        </button>
+        
+        <button class="side-index-tag" type="button" data-filter-tag="归档">
+          <span class="name">归档</span>
+          <span class="count">1</span>
+        </button>
+        
+        <button class="side-index-tag" type="button" data-filter-tag="文字">
+          <span class="name">文字</span>
+          <span class="count">1</span>
+        </button>
+        
+        <button class="side-index-tag" type="button" data-filter-tag="电影">
+          <span class="name">电影</span>
+          <span class="count">1</span>
+        </button>
+        
+        <button class="side-index-tag" type="button" data-filter-tag="学习">
+          <span class="name">学习</span>
+          <span class="count">1</span>
+        </button>
+        
+        <button class="side-index-tag" type="button" data-filter-tag="历史&amp;人文">
+          <span class="name">历史&amp;人文</span>
+          <span class="count">1</span>
+        </button>
+        
+      </div>
+    </section>
+
+    <div class="side-index-footer">
+      <button class="side-index-clear" type="button" data-filter-clear>清除筛选</button>
+    </div>
+  </div>
+</aside>
+<div class="side-index-mask" data-index-mask></div>
+
+<div class="post-list">
   
-  <section class="post-item">
+  <section class="post-item" data-title="上海上海" data-categories="笔记" data-tags="电影">
     <a class="post-item-title" href="/2026/03/30/i-wish-i-knew/">上海上海</a>
     <div class="post-item-summary">
       
@@ -72,7 +163,7 @@
     </div>
   </section>
   
-  <section class="post-item">
+  <section class="post-item" data-title="Minecraft 付费整合包，真的违规吗？" data-categories="文章" data-tags="Minecraft||整合包">
     <a class="post-item-title" href="/2026/03/23/paid-modpack/">Minecraft 付费整合包，真的违规吗？</a>
     <div class="post-item-summary">
       在 Minecraft 社区中，整合包收费一直以来是个备受争议的话题。在付费整合包的评论区里，总会引发激烈的讨论——有些人认为“作者付出劳动凭什么不能收费”，而另一方则坚持“拿别人的模组卖钱就是盗版贩子”的观点。那么，这个问题的核心到底是什么？整合包收费，到底违不违规？今天，我想基于我自己的思考，和大家谈谈这个话题。
@@ -93,7 +184,7 @@
     </div>
   </section>
   
-  <section class="post-item">
+  <section class="post-item" data-title="明朝内阁制度的形成与沿革" data-categories="文章" data-tags="学习||历史&amp;人文">
     <a class="post-item-title" href="/2025/12/30/ming-cabinet/">明朝内阁制度的形成与沿革</a>
     <div class="post-item-summary">
       
@@ -112,7 +203,7 @@
     </div>
   </section>
   
-  <section class="post-item">
+  <section class="post-item" data-title="Core³ 三维 | 一种更加合理的整合包分类方法" data-categories="文章" data-tags="Minecraft||整合包">
     <a class="post-item-title" href="/2025/08/19/core-cube/">Core³ 三维 | 一种更加合理的整合包分类方法</a>
     <div class="post-item-summary">
       想象一个这样的场景：
@@ -134,7 +225,7 @@
     </div>
   </section>
   
-  <section class="post-item">
+  <section class="post-item" data-title="新开始" data-categories="" data-tags="">
     <a class="post-item-title" href="/2025/06/13/starter/">新开始</a>
     <div class="post-item-summary">
       你好，这里是暮雨，第一次见面！
@@ -149,7 +240,7 @@
     </div>
   </section>
   
-  <section class="post-item">
+  <section class="post-item" data-title="归档 | 过去写的文字" data-categories="文学" data-tags="归档||文字">
     <a class="post-item-title" href="/2025/02/01/achieve-article/">归档 | 过去写的文字</a>
     <div class="post-item-summary">
       
